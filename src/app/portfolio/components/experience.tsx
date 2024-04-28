@@ -8,7 +8,7 @@ function Experience({ experiences }: { experiences: ExperienceType[] }) {
   return (
     <ol className="group/list">
       {experiences.map((experience, index) => (
-        <li className="mb-12">
+        <li className="mb-12" key={index.toString()}>
           <ExProCard
             title={`${experience.position} - ${experience.company.name}`}
             description={experience.description}

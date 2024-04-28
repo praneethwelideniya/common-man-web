@@ -55,11 +55,12 @@ function UpcomingPayments({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {upcomingPayments.map((payment) => (
+            {upcomingPayments.map((payment, index) => (
               <TableRow
                 className={`${
                   payment.type == "PAYMENT" ? "bg-red-100" : "bg-green-100"
                 }`}
+                key={index.toString()}
               >
                 <TableCell>
                   <div className="font-medium">{payment.name}</div>

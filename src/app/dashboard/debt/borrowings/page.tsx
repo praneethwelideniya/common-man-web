@@ -67,8 +67,8 @@ export default async function Borrowings() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {debts?.map((debt) => (
-                <TableRow>
+              {debts?.map((debt, key) => (
+                <TableRow key={key.toString()}>
                   <TableCell>
                     <div className="font-medium">{debt.creditorName}</div>
                     {debt.creditorType === UserCreditorEnum.CREDITOR && (

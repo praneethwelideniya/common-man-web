@@ -38,8 +38,11 @@ const Nav = () => {
       <div className="hidden sm:flex gap-6">
         <NavigationMenu>
           <NavigationMenuList>
-            {menuList.map((menu: string) => (
-              <NavigationMenuItem className=" bg-transparent">
+            {menuList.map((menu: string, key: number) => (
+              <NavigationMenuItem
+                className=" bg-transparent"
+                key={key.toString()}
+              >
                 <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     {menu}
@@ -64,8 +67,8 @@ const Nav = () => {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent className="sm:hidden mr-2 min-w-[150px] ">
-            {menuList.map((menu: string) => (
-              <DropdownMenuItem>{menu}</DropdownMenuItem>
+            {menuList.map((menu: string, key: number) => (
+              <DropdownMenuItem key={key.toString()}>{menu}</DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>

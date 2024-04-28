@@ -11,7 +11,7 @@ function Projects({ projects }: { projects: ProjectsType[] }) {
   return (
     <ol className="group/list">
       {projects.map((project, index) => (
-        <li className="mb-12">
+        <li className="mb-12" key={index.toString()}>
           <ExProCard
             title={project.title}
             description={project.description}

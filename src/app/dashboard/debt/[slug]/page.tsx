@@ -217,7 +217,7 @@ async function DebtPage({ params }: { params: { slug: string } }) {
                         <Separator className="my-4" />
                       </>
                     ) : (
-                      <Accordion type="single" collapsible>
+                      <Accordion type="single" collapsible key={index.toString}>
                         <AccordionItem value="item-1">
                           <AccordionTrigger className="hover:no-underline">
                             <InstalmentUI
@@ -229,8 +229,11 @@ async function DebtPage({ params }: { params: { slug: string } }) {
                           <AccordionContent className="pl-10">
                             {instlmnt.values
                               .filter((val) => val.paid)
-                              .map((ins) => (
-                                <div className="flex items-center w-full font-medium">
+                              .map((ins, insindex) => (
+                                <div
+                                  className="flex items-center w-full font-medium"
+                                  key={insindex.toString()}
+                                >
                                   <p>{`Paid at ${new Date(
                                     ins.paidAt
                                   ).toLocaleDateString()}`}</p>

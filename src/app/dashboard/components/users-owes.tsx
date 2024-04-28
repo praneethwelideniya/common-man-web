@@ -63,8 +63,8 @@ function UsersOwes({
           <TableBody>
             {userOwes
               //   .filter(({ oweFrom, oweTo }) => oweFrom > 0 || oweTo > 0)
-              .map((user) => (
-                <TableRow>
+              .map((user, index) => (
+                <TableRow key={index.toString()}>
                   <TableCell>
                     <div className="font-medium">{user.fullName}</div>
                     <div className="hidden text-sm text-muted-foreground md:inline">
