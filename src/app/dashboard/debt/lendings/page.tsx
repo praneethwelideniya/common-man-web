@@ -74,7 +74,7 @@ export default async function Lendings() {
                     <div className="font-medium">{debt.debitorName}</div>
                     {debt.creditorType === UserCreditorEnum.CREDITOR && (
                       <div className="hidden text-sm text-muted-foreground md:inline">
-                        'Custom Creditor'
+                        {"Custom Creditor"}
                       </div>
                     )}
                   </TableCell>

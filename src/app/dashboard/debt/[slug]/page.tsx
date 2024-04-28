@@ -208,16 +208,20 @@ async function DebtPage({ params }: { params: { slug: string } }) {
                 return (
                   <>
                     {paidStatus === "PENDING" ? (
-                      <>
+                      <div key={index.toString()}>
                         <InstalmentUI
                           paidStatus={paidStatus}
                           instlmnt={instlmnt}
                           currency={currency}
                         />
                         <Separator className="my-4" />
-                      </>
+                      </div>
                     ) : (
-                      <Accordion type="single" collapsible key={index.toString}>
+                      <Accordion
+                        type="single"
+                        collapsible
+                        key={index.toString()}
+                      >
                         <AccordionItem value="item-1">
                           <AccordionTrigger className="hover:no-underline">
                             <InstalmentUI
@@ -408,14 +412,14 @@ async function DebtPage({ params }: { params: { slug: string } }) {
                   defaultValue={historyLog.map((log) => log.date)}
                 >
                   <div className="grid gap-3">
-                    {historyLog.map((log) => (
-                      <AccordionItem value={log.date}>
+                    {historyLog.map((log, key) => (
+                      <AccordionItem value={log.date} key={key.toString()}>
                         <AccordionTrigger className="font-semibold hover:no-underline">
                           {log.date}
                         </AccordionTrigger>
                         <AccordionContent className="text-muted-foreground gap-2">
                           {log.history.map((his, index) => (
-                            <p className="my-1" key={index}>
+                            <p className="my-1" key={index.toString()}>
                               {his}
                             </p>
                           ))}
