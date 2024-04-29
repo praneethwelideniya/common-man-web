@@ -1,5 +1,5 @@
 "use server";
-import { AddUserCreditorRequest } from "@/app/dashboard/debt/users/create/page";
+import { AddUserCreditorRequest } from "@/types/UserRequest";
 import UserResponse, { UserType } from "@/types/UserRespose";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";

@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/form";
 import AuthResponse from "@/types/AuthResponse";
 import Loader from "@/components/Loader";
-import { phoneRegex } from "@/app/dashboard/debt/users/create/page";
+import { phoneRegex } from "@/types/UserRequest";
 
 const FormSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),

@@ -1,4 +1,4 @@
-import { UserCreditorEnum } from "@/app/dashboard/debt/users/create/page";
+import { UserCreditorEnum } from "@/types/UserRequest";
 import { Installment } from "@/types/Debt";
 import { UserType } from "@/types/UserRespose";
 

@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import CreateButton from "@/app/dashboard/components/create-button";
-import { UserCreditorEnum } from "@/app/dashboard/debt/users/create/page";
+import { UserCreditorEnum } from "@/types/UserRequest";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,

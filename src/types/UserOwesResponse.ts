@@ -1,4 +1,4 @@
-import { UserCreditorEnum } from "@/app/dashboard/debt/users/create/page";
+import { UserCreditorEnum } from "@/types/UserRequest";
 
 export interface UserOwesResponse {
   _id: string;

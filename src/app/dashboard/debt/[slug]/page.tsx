@@ -1,4 +1,4 @@
-import { Debt, Installment } from "@/types/Debt";
+import { Installment } from "@/types/Debt";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -9,24 +9,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-import {
-  Check,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Copy,
-  CreditCard,
-  Delete,
-  File,
-  ListFilter,
-  MoreVertical,
-  Pencil,
-  Recycle,
-  Trash,
-} from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { DeleteDebtButton } from "@/app/dashboard/components/delete-debt-button";
+import { MakePaymentButton } from "@/app/dashboard/components/make-payment-button";
+import { UserCreditorEnum } from "@/types/UserRequest";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
@@ -35,37 +23,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-} from "@/components/ui/pagination";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { MakePaymentButton } from "@/app/dashboard/components/make-payment-button";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { UserDebtResponse } from "@/types/UserDebtResponse";
-import { UserCreditorEnum } from "@/app/dashboard/debt/users/create/page";
-import { DeleteDebtButton } from "@/app/dashboard/components/delete-debt-button";
 
 type PaidStatusType = "PAID" | "PARTIAL" | "PENDING";
 

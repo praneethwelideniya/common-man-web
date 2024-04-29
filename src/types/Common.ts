@@ -1,6 +1,6 @@
 export enum Currency {
-  USD = "USD",
-  EUR = "EUR",
+  // USD = "USD",
+  // EUR = "EUR",
   // GBP = "GBP",
   // JPY = "JPY",
   // RUB = "RUB",
@@ -10,8 +10,8 @@ export enum Currency {
   // CAD = "CAD",
   // CHF = "CHF",
   // SEK = "SEK",
-  NZD = "NZD",
-  LKR = "LKR",
+  // NZD = "NZD",
+  // LKR = "LKR",
 }
 
 export const currencyArray = Object.keys(Currency).map(function (currency) {
