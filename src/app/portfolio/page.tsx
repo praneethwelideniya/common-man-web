@@ -126,9 +126,9 @@ function PortfolioPage() {
         id: "projects",
         content: [
           {
-            title: "Debt Planning App (Commanman)",
+            title: "Debt Management App (Commanman)",
             description:
-              "This is a React Native app, Designed and developed a comprehensive workout app tailored to muscle building, showcasing exercises categorized by targeted muscles and available equipment. Each exercise is accompanied by a detailed description, step-by-step instructions, and visual aids, including images demonstrating proper form and the specific muscles engaged. Committed to promoting effective fitness routines, I integrated features to facilitate users in achieving their fitness goals efficiently and safely.",
+              "This is a debt management web application built on Next.js, Express.js, and MongoDB. This platform empowers users to effortlessly track their debts, whether given or taken, and manage repayments through customizable installments. With a seamless user interface deployed on Vercel, and a robust backend hosted on Azure App Service, our solution ensures reliability and scalability.",
             link: "/debtapp",
             technologies: [
               "React",

@@ -2,18 +2,18 @@ import { ExperienceType, ProjectsType } from "@/app/portfolio/components/types";
 
 export const dynamic = "force-dynamic"; // defaults to auto
 
-type data = {
-  name: string;
-  title: string;
-  subtitle: string;
-  socials: { name: string; url: string }[];
-  resume: string;
-  sections: {
-    name: string;
-    id: string;
-    content: string[] | ExperienceType[] | ProjectsType[];
-  }[];
-};
+// type data = {
+//   name: string;
+//   title: string;
+//   subtitle: string;
+//   socials: { name: string; url: string }[];
+//   resume: string;
+//   sections: {
+//     name: string;
+//     id: string;
+//     content: string[] | ExperienceType[] | ProjectsType[];
+//   }[];
+// };
 
 export async function GET(request: Request) {
   const data = {
