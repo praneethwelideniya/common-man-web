@@ -1,8 +1,9 @@
 "use server";
 
 import { logout } from "@/actions/auth";
-import { DebtRequestType } from "@/app/dashboard/components/debt-create-form";
+
 import ApiResponse from "@/types/ApiResponse";
+import { DebtRequestType } from "@/types/DebtRequest";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";

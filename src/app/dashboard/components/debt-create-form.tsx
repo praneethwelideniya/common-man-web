@@ -2,7 +2,6 @@
 
 import CreditorSwitcher from "@/app/dashboard/components/creditor-switcher";
 import { Button } from "@/components/ui/button";
-import { Combobox } from "@/components/ui/combox";
 import {
   Form,
   FormControl,
@@ -12,7 +11,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -20,152 +18,37 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CaretSortIcon } from "@radix-ui/react-icons";
-import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
-import { number, z } from "zod";
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { currencyArray } from "@/types/Common";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { createDebt } from "@/actions/debt";
 import {
   AlertDialog,
+  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-  AlertDialogAction,
-  AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
-import { createDebt } from "@/actions/debt";
+import { currencyArray } from "@/types/Common";
 import { useState } from "react";
 
-import Link from "next/link";
 import Loader from "@/components/Loader";
-
-const sampleCreditors = [
-  {
-    name: "AfterPay",
-    type: "CREDITOR",
-    description: "bla bla bla",
-    _id: "66059c0b178516c239d8be40",
-  },
-  {
-    name: "AfterPay User",
-    type: "USER",
-    ref: "66059cb5178516c239d8be43",
-    _id: "66059cb6178516c239d8be47",
-  },
-
-  {
-    name: "StepPay",
-    type: "CREDITOR",
-    description: "bla bla bla",
-    _id: "66076c8fa836217b181c3a89",
-  },
-  {
-    name: "Praneeth Welideniya",
-    type: "USER",
-    ref: "65f58ff09eeb8bcd1d5a9e0a",
-    _id: "6607d7a19b92654b170dd55b",
-  },
-];
-
-export enum DebtTypeEnum {
-  LEND = "LEND",
-  BORROW = "BORROW",
-}
-
-const UserCrediorScheme = z.object({
-  type: z.enum(["USER", "CREDITOR"]),
-  _id: z.string().min(1),
-  ref: z.string().min(1).optional(),
-  name: z.string().min(1),
-});
-
-const defaultProps = z.object({
-  debtType: z.enum(["LEND", "BORROW"]).default("LEND"),
-  involvedBy: UserCrediorScheme,
-  amount: z.string().refine((val) => !Number.isNaN(parseFloat(val)), {
-    message: "Expected number, received a string",
-  }),
-  currency: z.string().min(1),
-  description: z.string().min(1),
-  debtDate: z.preprocess((arg) => {
-    if (typeof arg == "string" || arg instanceof Date) return new Date(arg);
-  }, z.date()),
-  interest: z
-    .string()
-    .refine((val) => !Number.isNaN(parseFloat(val)), {
-      message: "Expected number, received a string",
-    })
-    .default("0")
-    .optional(),
-  repaymentType: z.enum(["INSTALLMENTS", "LUMPSUM"]),
-});
-
-const singleInstallmentScheme = z.object({
-  installmentId: z.string().min(1),
-  amount: z.string().min(1),
-  dueDate: z.date(),
-  paid: z.boolean(),
-  paidAt: z.date().optional(),
-});
-
-const repaymentFrequencyShema = z.enum([
-  "DAILY",
-  "WEEKLY",
-  "FORTNIGHTLY",
-  "MONTHLY",
-  "YEARLY",
-]);
-
-export type RepaymentFrequencyType = z.infer<typeof repaymentFrequencyShema>;
-
-const installmentScheme = z.object({
-  repaymentType: z.literal("INSTALLMENTS"),
-  repaymentFrequency: repaymentFrequencyShema,
-  installments: z.array(singleInstallmentScheme).optional(),
-  numberOfInstallments: z
-    .number()
-    .refine((val) => Number.isInteger(val) && val > 0)
-    .optional(),
-});
-
-const lumpsumScheme = z.object({
-  repaymentType: z.literal("LUMPSUM"),
-  dueDate: z.preprocess((arg) => {
-    if (typeof arg == "string" || arg instanceof Date) return new Date(arg);
-  }, z.date()),
-});
-
-const schemaCond = z.discriminatedUnion("repaymentType", [
-  installmentScheme,
-  lumpsumScheme,
-]);
-
-const schema = z.intersection(defaultProps, schemaCond);
-
-// const schema = z.intersection(schemaOne, schemaCondOne);
-
-export type UserCreditorType = z.infer<typeof UserCrediorScheme>;
-
-// Infer type for typescript
-export type DebtRequestType = z.infer<typeof schema>;
+import {
+  DebtRequestType,
+  UserCreditorType,
+  debtSchema,
+} from "@/types/DebtRequest";
 
 export default function DebtCreateForm({
   creditors,
@@ -173,7 +56,7 @@ export default function DebtCreateForm({
   creditors: UserCreditorType[];
 }) {
   const form = useForm<DebtRequestType>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(debtSchema),
     defaultValues: {
       debtType: "LEND",
       repaymentType: "LUMPSUM",

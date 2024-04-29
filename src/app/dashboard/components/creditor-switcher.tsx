@@ -3,7 +3,6 @@
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 
-import { UserCreditorType } from "@/app/dashboard/components/debt-create-form";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +20,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { UserCreditorType } from "@/types/DebtRequest";
 
 const creditorsGroupsSam = [
   {

@@ -1,4 +1,4 @@
-import { RepaymentFrequencyType } from "@/app/dashboard/components/debt-create-form";
+import { RepaymentFrequencyType } from "@/types/DebtRequest";
 import { UserCreditorEnum } from "@/types/UserRequest";
 
 export interface Debt {
