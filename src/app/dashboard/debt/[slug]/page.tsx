@@ -200,7 +200,7 @@ async function DebtPage({ params }: { params: { slug: string } }) {
                                   key={insindex.toString()}
                                 >
                                   <p>{`Paid at ${new Date(
-                                    ins.paidAt
+                                    ins.paidAt as unknown as string
                                   ).toLocaleDateString()}`}</p>
                                   <p className="ml-auto">
                                     {currency}{" "}
