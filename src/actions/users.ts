@@ -35,7 +35,6 @@ export async function addCreditors(formData: AddUserCreditorRequest) {
   revalidateTag("creditors");
   const cookiesList = cookies();
   const requestData = formData;
-  console.log("formData", requestData);
   const accessToken = cookiesList.get("accessToken");
   const response = await fetch(`${process.env.API_URL}/users/creditors`, {
     method: "POST",
@@ -52,7 +51,7 @@ export async function addCreditors(formData: AddUserCreditorRequest) {
     redirect("/auth/login");
   }
   const result: UserResponse = await response.json();
-  console.log("response", result);
+
   if (result.success) {
     redirect("/dashboard/debt/users");
   } else {

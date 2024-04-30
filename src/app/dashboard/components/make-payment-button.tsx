@@ -17,6 +17,7 @@ import { Installment } from "@/types/Debt";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useRef, useState } from "react";
 import { repayDebt } from "@/actions/debt";
+import Loader from "@/components/Loader";
 
 enum AmountEnum {
   NEXTPAYMENT = "NEXTPAYMENT",
@@ -45,6 +46,8 @@ export function MakePaymentButton({
     parseFloat(nextInstallment.amount)
   );
   const [showCustom, setShowCustom] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setShowCustom(false);
@@ -59,10 +62,20 @@ export function MakePaymentButton({
         setShowCustom(false);
         setPayAmount(parseFloat(nextInstallment.amount));
       }}
+      open={showDialog}
     >
-      <DialogTrigger asChild>
-        <Button>Make a Payment</Button>
-      </DialogTrigger>
+      {/* <DialogTrigger asChild>
+      </DialogTrigger> */}
+      <Button
+        onClick={() => {
+          setShowCustom(false);
+          setPayAmount(parseFloat(nextInstallment.amount));
+          setShowDialog(true);
+        }}
+      >
+        Make a Payment
+      </Button>
+
       <DialogContent className=" max-w-[80%] sm:max-w-[460px] ">
         <DialogHeader>
           <DialogTitle className="mx-auto mb-2">Make a Payment</DialogTitle>
@@ -70,6 +83,7 @@ export function MakePaymentButton({
         </DialogHeader>
         <Card>
           <CardContent className="grid gap-4 py-4 mx-auto">
+            {loading && <Loader />}
             <RadioGroup
               defaultValue={
                 noIstallments ? AmountEnum.TOTALDUE : AmountEnum.NEXTPAYMENT
@@ -186,11 +200,24 @@ export function MakePaymentButton({
             />
           </div>
         </div> */}
-        <DialogFooter className="mx-auto w-full">
+        <DialogFooter className="w-full flex flex-col">
           <Button
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault();
-              repayDebt({ _id, payAmount });
+              setShowDialog(false);
+            }}
+            className="w-full py-6"
+            variant={"outline"}
+          >
+            Close
+          </Button>
+          <Button
+            onClick={async (e) => {
+              e.preventDefault();
+              setLoading(true);
+              await repayDebt({ _id, payAmount });
+              setLoading(false);
+              setShowDialog(false);
             }}
             className="w-full py-6"
             disabled={!payAmount || payAmount > remainingAmount}

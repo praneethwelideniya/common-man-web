@@ -21,7 +21,7 @@ function PortfolioPage() {
         url: "https://www.linkedin.com/in/praneeth-welideniya",
       },
     ],
-    resume: "/cv.pdf",
+    resume: "/Praneeth_Welideniya_Resume.pdf",
     sections: [
       {
         name: "About",
