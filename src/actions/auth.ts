@@ -19,13 +19,16 @@ export async function createUser(requestData: RegisterRequest) {
   });
 
   const result = await response.json();
+  if (result.success) {
+    const refreshToken = response.headers.get("refreshToken");
+    const accessToken = response.headers.get("accessToken");
+    accessToken ? cookiesList.set("accessToken", accessToken) : null;
+    refreshToken ? cookiesList.set("refreshToken", refreshToken) : null;
+    const user = result.data;
+    cookiesList.set("authUser", JSON.stringify(user));
 
-  const refreshToken = response.headers.get("refreshToken");
-  const accessToken = response.headers.get("accessToken");
-  accessToken ? cookiesList.set("accessToken", accessToken) : null;
-  refreshToken ? cookiesList.set("refreshToken", refreshToken) : null;
-  const user = result.data;
-  cookiesList.set("authUser", JSON.stringify(user));
+    redirect("/dashboard");
+  }
 
   return result;
 }
@@ -55,7 +58,7 @@ export async function login(formData: LoginRequest) {
     const user = result.data;
     cookiesList.set("authUser", JSON.stringify(user));
 
-    redirect("/");
+    redirect("/dashboard");
   }
 
   return result;
