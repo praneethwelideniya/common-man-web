@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+
 import "./globals.css";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, Anton } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
@@ -34,4 +42,26 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+
+{
+  /* <ClerkProvider>
+<html lang="en">
+  <body
+    className={cn(
+      "min-h-screen bg-background font-sans antialiased",
+      fontSans.variable
+    )}
+  >
+    <SignedOut>
+      <SignInButton />
+    </SignedOut>
+    <SignedIn>
+      <UserButton />
+    </SignedIn>
+    {children}
+    <Toaster />
+  </body>
+</html>
+</ClerkProvider> */
 }

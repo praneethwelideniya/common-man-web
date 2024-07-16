@@ -1,27 +1,25 @@
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { projects } from "@/types/Projects";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="container mx-auto p-4">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800">
-            Hi, Welcome to my website
-          </h1>
-          <p className="mt-2 text-lg text-gray-600">
-            Please check my portfolio
-          </p>
-        </div>
-        <div className="mt-8 text-center">
-          <Link
-            href="/portfolio"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
-          >
-            Portfolio
-          </Link>
-        </div>
+    <main className="h-full min-h-[40rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-start antialiased p-16">
+      <div className="max-w-2xl mx-auto p-4">
+        <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
+          Hi, Welcome to my Website
+        </h1>
+        <p></p>
+        <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
+          I am Praneeth
+        </p>
       </div>
+      <div className="max-w-5xl mx-auto px-8">
+        <HoverEffect items={projects} />
+      </div>
+      <BackgroundBeams />
     </main>
   );
 }

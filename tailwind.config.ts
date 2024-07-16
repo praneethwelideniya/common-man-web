@@ -1,5 +1,11 @@
 import type { Config } from "tailwindcss";
 const { fontFamily } = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+const colors = require("tailwindcss/colors");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config = {
   darkMode: ["class"],
@@ -75,10 +81,46 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        roboto: ["Roboto", "sans-serif"],
+        "open-sans": ["Open Sans", "sans-serif"],
+        lato: ["Lato", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+        oswald: ["Oswald", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+        merriweather: ["Merriweather", "serif"],
+        "playfair-display": ["Playfair Display", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+        nunito: ["Nunito", "sans-serif"],
+        mukta: ["Mukta", "sans-serif"],
+        alegreya: ["Alegreya", "serif"],
+        quicksand: ["Quicksand", "sans-serif"],
+        "source-sans-pro": ["Source Sans Pro", "sans-serif"],
+        "fjalla-one": ["Fjalla One", "sans-serif"],
+        arial: ["Arial", "sans-serif"],
+        verdana: ["Verdana", "sans-serif"],
+        tahoma: ["Tahoma", "sans-serif"],
+        georgia: ["Georgia", "serif"],
+        palatino: ["Palatino", "serif"],
+        garamond: ["Garamond", "serif"],
+        "times-new-roman": ["Times New Roman", "serif"],
+        "courier-new": ["Courier New", "monospace"],
+        helvetica: ["Helvetica", "sans-serif"],
+        "lucida-sans": ["Lucida Sans", "sans-serif"],
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
 } satisfies Config;
 
 export default config;
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
