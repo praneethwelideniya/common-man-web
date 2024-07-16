@@ -1,5 +1,5 @@
 "use server";
-import { PropmtFormType } from "@/app/slideo/page";
+
 import {
   contentFontFamilies,
   contentFontSizes,
@@ -7,6 +7,7 @@ import {
   titleFontFamilies,
   titleFontSizes,
 } from "@/tailwindpalette";
+import { PropmtFormType } from "@/types/Slideo";
 import { google } from "@ai-sdk/google";
 import { generateText, generateObject } from "ai";
 

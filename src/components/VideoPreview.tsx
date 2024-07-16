@@ -1,8 +1,7 @@
 // pages/capture.js
 "use client";
-import { ContentType } from "@/app/slideo/page";
+
 import BackgroundImage from "@/components/BackgroundImage";
-import GradientPicker from "@/components/GradientPicker";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,6 +35,7 @@ import {
   titleFontFamilies,
   titleFontSizes,
 } from "@/tailwindpalette";
+import { ContentType } from "@/types/Slideo";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
 import { Select, SelectTrigger } from "@radix-ui/react-select";
