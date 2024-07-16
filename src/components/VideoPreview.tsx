@@ -259,6 +259,7 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
 
                 {backgroundColors.map((val, index) => (
                   <div
+                    key={index}
                     onClick={() => {
                       dispatch({
                         type: {
@@ -294,7 +295,9 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
                 <SelectContent>
                   <SelectGroup>
                     {titleFontSizes.map((value, index) => (
-                      <SelectItem value={value.value}>{value.name}</SelectItem>
+                      <SelectItem value={value.value} key={index}>
+                        {value.name}
+                      </SelectItem>
                     ))}
                   </SelectGroup>
                 </SelectContent>
@@ -320,10 +323,11 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {titleFontFamilies?.map((value) => (
+                    {titleFontFamilies?.map((value, index) => (
                       <SelectItem
                         value={value.value}
                         className={` ${value.value}`}
+                        key={index}
                       >
                         {value.name}
                       </SelectItem>
@@ -337,6 +341,7 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
               <div className=" flex  flex-wrap justify-start items-center  align-baseline">
                 {backgroundColors.map((val, index) => (
                   <div
+                    key={index}
                     onClick={() => {
                       dispatch({
                         type: {
@@ -372,7 +377,9 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
                 <SelectContent>
                   <SelectGroup>
                     {contentFontSizes.map((value, index) => (
-                      <SelectItem value={value.value}>{value.name}</SelectItem>
+                      <SelectItem value={value.value} key={index}>
+                        {value.name}
+                      </SelectItem>
                     ))}
                   </SelectGroup>
                 </SelectContent>
@@ -398,10 +405,11 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {contentFontFamilies?.map((value) => (
+                    {contentFontFamilies?.map((value, index) => (
                       <SelectItem
                         value={value.value}
                         className={` ${value.value}`}
+                        key={index}
                       >
                         {value.name}
                       </SelectItem>
