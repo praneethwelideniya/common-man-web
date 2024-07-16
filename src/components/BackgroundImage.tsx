@@ -1,12 +1,11 @@
 import Image, { StaticImageData } from "next/image";
-import mountains from "../../public/bgImage.jpg";
 
 export default function BackgroundImage({
   alt,
-  src = mountains,
+  src,
 }: {
   alt: string;
-  src?: StaticImageData | string;
+  src: StaticImageData | string;
 }) {
   return (
     <Image
