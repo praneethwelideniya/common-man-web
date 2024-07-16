@@ -3,32 +3,19 @@
 import { getTutorial } from "@/actions/genAi";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import Loader from "@/components/Loader";
 import VideoPreview from "@/components/VideoPreview";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  Form,
 } from "@/components/ui/form";
-import { Tabs } from "@/components/ui/anim-tabs";
-import FontPicker from "@/components/FontPicker";
-import { color } from "framer-motion";
+import { Input } from "@/components/ui/input";
 import {
   contentFontFamilies,
   contentFontSizes,
@@ -36,7 +23,9 @@ import {
   titleFontFamilies,
   titleFontSizes,
 } from "@/tailwindpalette";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 // Force the page to be dynamic and allow streaming responses up to 30 seconds
 export const dynamic = "force-dynamic";
@@ -123,91 +112,6 @@ export default function GeminiComponent() {
       noOfScreens: "2",
     },
   });
-  const Prompt = () => {
-    return (
-      <div className="flex flex-col items-center bg-transparent">
-        <Form {...form}>
-          {form.formState.isSubmitting && <Loader />}
-          <form>
-            <div className=" grid  gap-5 grid-cols-3">
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => (
-                  <FormItem className=" col-span-2">
-                    <FormLabel>Topic Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Topic Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="noOfScreens"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>No of screens</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="No of screens"
-                        type="number"
-                        min={2}
-                        value={field.value}
-                        defaultValue={field.value}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </form>
-        </Form>
-        <div>
-          <FontPicker />
-        </div>
-
-        <div className="border-t px-6 py-4">
-          <Button type="submit" onClick={() => generateTutorials()}>
-            Generate
-          </Button>
-        </div>
-      </div>
-    );
-  };
-  const tabs = [
-    {
-      title: "Prompt",
-      value: "Prompt",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <Prompt />
-        </div>
-      ),
-    },
-    {
-      title: "Preview",
-      value: "Preview",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <Prompt />
-        </div>
-      ),
-    },
-    {
-      title: "Video",
-      value: "Video",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <Prompt />
-        </div>
-      ),
-    },
-  ];
 
   const [generation, setGeneration] = useState<Array<ContentType>>([
     {
