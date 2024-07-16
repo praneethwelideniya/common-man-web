@@ -118,7 +118,7 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
 
   const convertImagesToVideo = async (images: any) => {
     await ffmpeg.load();
-    images.forEach(async (image, index) => {
+    images.forEach(async (image: any, index: any) => {
       const a = await ffmpeg.writeFile(
         `img${index}.png`,
         await fetchFile(image)
