@@ -36,7 +36,6 @@ import {
   titleFontSizes,
 } from "@/tailwindpalette";
 import { ContentType } from "@/types/Slideo";
-import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
 import { Select, SelectTrigger } from "@radix-ui/react-select";
 import html2canvas from "html2canvas";
@@ -111,12 +110,14 @@ const VideoPreview = ({ screens }: { screens: ContentType[] }) => {
     });
   }, [api]);
   const itemEls = useRef(new Array());
-  const ffmpeg = new FFmpeg();
+
   const [videoUrl, setVideoUrl] = useState(null);
 
   const [preview, setPreview] = useState("");
 
   const convertImagesToVideo = async (images: any) => {
+    const FFmpeg = (await import("@ffmpeg/ffmpeg")).FFmpeg;
+    const ffmpeg = new FFmpeg();
     await ffmpeg.load();
     images.forEach(async (image: any, index: any) => {
       const a = await ffmpeg.writeFile(
