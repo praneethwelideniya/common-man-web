@@ -14,6 +14,7 @@ import { Inter as FontSans, Anton } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { WebVitals } from "@/components/web-vitals";
+import { Analytics } from "@vercel/analytics/react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -38,7 +39,8 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <WebVitals />
+        <Analytics />
+        {/* <WebVitals /> */}
         {children}
         <Toaster />
       </body>
