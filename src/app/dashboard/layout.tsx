@@ -1,6 +1,12 @@
 import DashboardHeader from "@/app/dashboard/components/dashboard-header";
 import DashboardMenuBar from "@/app/dashboard/components/dashboard-menubar";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "CMNM Debt App",
+  description: "Loan/Expense planning app",
+};
 
 export default function DashboardLayout({
   children, // will be a page or nested layout

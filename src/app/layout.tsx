@@ -20,8 +20,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "CMNM Debt App",
-  description: "Loan/Expense planning app",
+  title: "Praneeth Welideniya",
+  description: "I love coding. React | React Native | NextJS Developer",
 };
 
 export default function RootLayout({

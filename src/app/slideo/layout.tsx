@@ -1,14 +1,14 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CMNM Debt App",
-  description: "Loan/Expense planning app",
+  title: "Slideo",
+  description: "Create short videos using AI generated Slides",
 };
 
-export default function AuthLayout({
+export default function SlideoLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="lg:p-6">{children}</div>;
+  return <div>{children}</div>;
 }

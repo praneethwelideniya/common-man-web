@@ -88,7 +88,7 @@ export default function GeminiComponent() {
   return (
     <>
       {form.formState.isSubmitting && <Loader />}
-      <div className="flex-col justify-center items-center lg:px-[10%]">
+      <div className="flex-col justify-center items-center px-2 xl:px-[5%] 2xl:px-[10%] ">
         {form.formState.isSubmitting && <Loader />}
         <Card className="lg:m-20 flex flex-col justify-center bg-transparent">
           <CardContent>
