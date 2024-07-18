@@ -1,17 +1,17 @@
 export const projects = [
   {
     title: "Portfolio",
-    description: "My Portfolio",
+    description: "My portfolio",
     link: "/portfolio",
   },
   {
     title: "CMDebt",
-    description: "Simple Debt Mangement Application",
+    description: "Simple loan management application",
     link: "/dashboard",
   },
   {
     title: "Slideo",
-    description: "AI Powered Simple Slide short video generator",
+    description: "AI powered simple short slides generator",
     link: "/slideo",
   },
 ];
