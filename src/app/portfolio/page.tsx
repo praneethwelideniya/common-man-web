@@ -2,7 +2,6 @@ import Navbar from "@/app/portfolio/components/navbar";
 import Section from "@/app/portfolio/components/section";
 import Socials from "@/app/portfolio/components/socials";
 import { SocialMediaEnum } from "@/app/portfolio/components/types";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Download } from "lucide-react";
 import Link from "next/link";
 
@@ -234,7 +233,6 @@ function PortfolioPage() {
           ))}
         </main>
       </div>
-      <BackgroundBeams />
     </div>
   );
 }
