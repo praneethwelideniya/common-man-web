@@ -1,3 +1,4 @@
+import DownloadTrack from "@/app/portfolio/components/DownloadTrack";
 import Navbar from "@/app/portfolio/components/navbar";
 import Section from "@/app/portfolio/components/section";
 import Socials from "@/app/portfolio/components/socials";
@@ -205,19 +206,18 @@ function PortfolioPage() {
             <p className="mt-4 max-w-xs leading-normal">{data.subtitle}</p>
             {data?.resume && (
               <div className=" flex mt-4">
-                <Link
-                  href={data.resume}
-                  download={true}
-                  onClick={() => {
-                    track("Resume Download");
-                  }}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="rounded-full bg-teal-400/10 hover:bg-teal-100/10 px-3 py-1 text-lg font-medium leading-5 text-teal-300 hover:text-teal-400"
-                >
-                  Resume
-                  <Download className=" ms-2 inline-block h-4 w-4 " />
-                </Link>
+                <DownloadTrack>
+                  <Link
+                    href={data.resume}
+                    download={true}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="rounded-full bg-teal-400/10 hover:bg-teal-100/10 px-3 py-1 text-lg font-medium leading-5 text-teal-300 hover:text-teal-400"
+                  >
+                    Resume
+                    <Download className=" ms-2 inline-block h-4 w-4 " />
+                  </Link>
+                </DownloadTrack>
               </div>
             )}
             <Navbar
