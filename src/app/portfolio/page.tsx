@@ -2,6 +2,7 @@ import Navbar from "@/app/portfolio/components/navbar";
 import Section from "@/app/portfolio/components/section";
 import Socials from "@/app/portfolio/components/socials";
 import { SocialMediaEnum } from "@/app/portfolio/components/types";
+import { track } from "@vercel/analytics/react";
 import { Download } from "lucide-react";
 import Link from "next/link";
 
@@ -207,6 +208,9 @@ function PortfolioPage() {
                 <Link
                   href={data.resume}
                   download={true}
+                  onClick={() => {
+                    track("Resume Download");
+                  }}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="rounded-full bg-teal-400/10 hover:bg-teal-100/10 px-3 py-1 text-lg font-medium leading-5 text-teal-300 hover:text-teal-400"
