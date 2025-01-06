@@ -3,7 +3,6 @@ import Navbar from "@/app/portfolio/components/navbar";
 import Section from "@/app/portfolio/components/section";
 import Socials from "@/app/portfolio/components/socials";
 import { SocialMediaEnum } from "@/app/portfolio/components/types";
-import { track } from "@vercel/analytics/react";
 import { Download } from "lucide-react";
 import Link from "next/link";
 
@@ -127,6 +126,26 @@ function PortfolioPage() {
         name: "Projects",
         id: "projects",
         content: [
+          {
+            title: "Dezainer",
+            description:
+              "AI-powered design tool that enables users to generate and edit social media designs through AI. Features include AI-driven design generation using multiple models (Gemini Flash, Replicate), background removal, secure payment processing with Stripe, authentication with Clerk, and cloud storage using Google Cloud. Built with a responsive design editor using React Konva for complex image manipulation and real-time updates. Backend architected with PostgreSQL (Neon) for scalability.",
+            link: "https://dezainer.app",
+            technologies: [
+              "Next.js",
+              "React Native",
+              "Expo",
+              "TypeScript",
+              "Node.js",
+              "PostgreSQL",
+              "React Konva",
+              "Stripe",
+              "Clerk",
+              "Google Cloud Storage",
+              "Vercel",
+            ],
+            image: { name: "dezainer.png", alt: "DezainerLogo" },
+          },
           {
             title: "Debt Management App (Commanman)",
             description:

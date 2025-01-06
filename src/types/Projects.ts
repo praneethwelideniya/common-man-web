@@ -5,13 +5,18 @@ export const projects = [
     link: "/portfolio",
   },
   {
-    title: "CMDebt",
-    description: "Simple loan management application",
-    link: "/dashboard",
+    title: "Dezainer",
+    description: "AI powered editable design generator",
+    link: "https://dezainer.app",
   },
-  {
-    title: "Slideo",
-    description: "AI powered simple short slides generator",
-    link: "/slideo",
-  },
+  // {
+  //   title: "CMDebt",
+  //   description: "Simple loan management application",
+  //   link: "/dashboard",
+  // },
+  // {
+  //   title: "Slideo",
+  //   description: "AI powered simple short slides generator",
+  //   link: "/slideo",
+  // },
 ];
